@@ -1,8 +1,9 @@
-site: cameronreismueller.com
-name: Cameron Reismueller
-role: Climbing Instructor
-purpose: Personal website for climbing instruction and guiding services
-expertise: rock climbing, sport climbing, trad climbing, climbing safety, outdoor education
-services: beginner lessons, sport climbing instruction, trad climbing courses, private guiding
-contact: phone (see /book page)
-blog: https://cameronreismueller.com/blog
+site: ocblstraining.github.io
+name: Orange County BLS Training
+instructor: Sepi Reissmueller
+role: AHA-authorized BLS & ACLS Instructor, ER Nurse at UC Irvine Medical Center
+purpose: BLS and ACLS certification courses in Orange County, CA
+courses: AHA BLS Provider, AHA ACLS Provider — hybrid format (online coursework + in-person skills check)
+certification: AHA eCards, valid for 2 years
+audience: healthcare professionals, students, individuals, companies
+contact: email form on site

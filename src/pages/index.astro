@@ -4,24 +4,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Cameron Reismueller',
-  url: 'https://sunriseclimbing.github.io',
-  jobTitle: 'Climbing Guide & Instructor',
+  name: 'Sepi Reissmueller',
+  jobTitle: 'ER Nurse & AHA BLS/ACLS Instructor',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'UC Irvine Medical Center',
+  },
   knowsAbout: [
-    'Rock Climbing',
-    'Sport Climbing',
-    'Trad Climbing',
-    'Climbing Safety',
-    'Southern California Climbing',
+    'Basic Life Support',
+    'Advanced Cardiovascular Life Support',
+    'CPR',
+    'AED',
+    'Emergency Nursing',
   ],
-  sameAs: [],
 };
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Sunrise Climbing — Cameron Reismueller',
-  url: 'https://sunriseclimbing.github.io',
+  name: 'Orange County BLS Training',
+  url: 'https://ocblstraining.github.io',
 };
 
 const faqSchema = {
@@ -30,109 +32,228 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Do I need climbing experience to book a session?',
+      name: 'Is this an official AHA course?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Not at all. A lot of my clients are brand new to climbing. I bring all the gear and walk you through everything from the ground up.',
+        text: 'Yes. These are official American Heart Association courses. You receive an AHA eCard on completion.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What gear do I need to bring?',
+      name: 'How long does certification last?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'If you\'re just getting started, I have everything you need — harness, helmet, shoes. Just show up in clothes you can move in and bring water. If you have your own gear, bring it and we\'ll talk through your setup.',
+        text: '2 years.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Where do you climb?',
+      name: 'Do I need any experience?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'All over Southern California — Joshua Tree, Malibu Creek, Stoney Point, Tahquitz, the list goes on. I grew up climbing these spots and I\'ll pick the right one based on what we\'re working on and your comfort level.',
+        text: 'No prior experience is needed for BLS. ACLS is designed for healthcare professionals who may encounter cardiovascular emergencies.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How do I book?',
+      name: 'Where is the skills check?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Just give me a call at (714) 244-9286. We\'ll have a quick conversation about what you\'re looking for and find a day that works.',
+        text: 'Orange County. Scheduling is flexible.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does it take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The online portion is self-paced (a few hours). The in-person skills check is about an hour for BLS, and about two hours for ACLS.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Who is this for?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'BLS is for anyone — healthcare professionals, students, individuals, companies. No prerequisites. ACLS is for healthcare professionals who manage cardiovascular emergencies.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Will my employer accept this?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AHA BLS Provider and ACLS Provider certifications are the standard for hospitals and clinics, and meet OSHA requirements.',
       },
     },
   ],
 };
 
-const services = [
-  {
-    id: 'beginner-lessons',
-    title: 'Learn to Climb',
-    description: 'Never been on rock before? I\'ll teach you the basics — how to tie in, belay, move on the wall — at a pace that feels right for you.',
+const blsCourseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'AHA BLS Provider Course',
+  description: 'American Heart Association BLS Provider certification course. Hybrid format: online coursework plus in-person skills check.',
+  provider: {
+    '@type': 'Person',
+    name: 'Sepi Reissmueller',
   },
-  {
-    id: 'sport-climbing',
-    title: 'Sport Climbing',
-    description: 'Ready to lead on bolts? We\'ll work on clipping, reading routes, and building the confidence to commit above your last draw.',
+  educationalCredentialAwarded: 'AHA BLS Provider eCard',
+  courseMode: 'blended',
+  locationCreated: {
+    '@type': 'Place',
+    name: 'Orange County, CA',
   },
-  {
-    id: 'trad-climbing',
-    title: 'Trad Climbing',
-    description: 'Learn to place your own gear and build anchors. This is climbing at its most self-reliant, and I love teaching it.',
+};
+
+const aclsCourseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'AHA ACLS Provider Course',
+  description: 'American Heart Association ACLS Provider certification course. Hybrid format: online coursework plus in-person skills check.',
+  provider: {
+    '@type': 'Person',
+    name: 'Sepi Reissmueller',
   },
-  {
-    id: 'private-guiding',
-    title: 'Guided Days',
-    description: 'Pick a crag, pick a goal, and I\'ll plan the day. Great for getting outside for the first time or ticking a route you\'ve had your eye on.',
+  educationalCredentialAwarded: 'AHA ACLS Provider eCard',
+  courseMode: 'blended',
+  locationCreated: {
+    '@type': 'Place',
+    name: 'Orange County, CA',
   },
-];
+};
 ---
 
 <BaseLayout
-  title="Sunrise Climbing — Trad & Sport Climbing Instruction in Southern California"
-  description="Cameron Reismueller is a climbing guide based in Los Angeles with 10 years of experience. Trad and sport climbing instruction, guided days, and beginner lessons across Southern California."
-  schemas={[personSchema, websiteSchema, faqSchema]}
+  title="BLS & ACLS Certification in Orange County — AHA Authorized"
+  description="AHA-authorized BLS and ACLS certification in Orange County, CA. Hybrid course: online coursework plus in-person skills check. Taught by an ER nurse at UC Irvine Medical Center."
+  schemas={[personSchema, websiteSchema, faqSchema, blsCourseSchema, aclsCourseSchema]}
 >
   <!-- Hero -->
   <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
     <div class="max-w-3xl">
-      <p class="text-primary font-semibold mb-3">Los Angeles, CA</p>
       <h1 class="text-4xl sm:text-5xl font-bold text-text leading-tight mb-6">
-        Explore trad climbing in <span class="text-primary">Southern California</span>
+        BLS & ACLS Certification in <span class="text-primary">Orange County</span>
       </h1>
-      <p class="text-lg text-text-muted leading-relaxed mb-8 max-w-2xl">
-        I'm Cameron — I've been climbing for over 10 years and I grew up out here. I know the crags, I know the rock, and I'd love to show you around. Whether you're placing your first piece of gear or you've been climbing in the gym and want to get outside, I'll meet you where you are.
+      <p class="text-lg text-text-muted leading-relaxed mb-4 max-w-2xl">
+        Official American Heart Association BLS and ACLS courses. Hybrid format — complete the online coursework on your own time, then meet for an in-person skills check in Orange County.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a
-          href="tel:+17142449286"
-          class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
-        >
-          Call (714) 244-9286
-        </a>
-        <a
-          href="/services"
-          class="inline-flex items-center justify-center border border-border text-text px-6 py-3 rounded-lg font-medium hover:bg-surface transition-colors"
-        >
-          What I Offer
-        </a>
+      <p class="text-lg text-text-muted leading-relaxed mb-8 max-w-2xl">
+        Taught by Sepi Reissmueller, an ER nurse who manages the emergency department at UC Irvine Medical Center. Open to healthcare professionals, students, individuals, and companies.
+      </p>
+      <a
+        href="#get-started"
+        class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+      >
+        Get Started
+      </a>
+    </div>
+  </section>
+
+  <!-- What the Courses Cover -->
+  <section class="bg-surface py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-text mb-10">What the Courses Cover</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div>
+          <h3 class="text-xl font-semibold text-text mb-4">BLS Provider</h3>
+          <ul class="space-y-3 text-text-muted">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Adult, child, and infant CPR
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              AED operation
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Choking relief
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              High-performance team CPR
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Bag-mask ventilation
+            </li>
+          </ul>
+          <p class="text-sm text-text-muted mt-4">
+            Official AHA BLS Provider course. You receive an AHA eCard on completion.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-text mb-4">ACLS Provider</h3>
+          <ul class="space-y-3 text-text-muted">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Systematic approach to ACLS cases
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Recognition and management of cardiac arrest rhythms
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Airway management
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Pharmacology for ACLS
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1 shrink-0">&#10003;</span>
+              Team dynamics and communication
+            </li>
+          </ul>
+          <p class="text-sm text-text-muted mt-4">
+            Official AHA ACLS Provider course. You receive an AHA eCard on completion.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- What I Offer -->
+  <!-- How It Works -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <h2 class="text-3xl font-bold text-text mb-10">How It Works</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl">
+      <div class="text-center sm:text-left">
+        <div class="text-3xl font-bold text-primary mb-3">1</div>
+        <h3 class="font-semibold text-text mb-2">Online</h3>
+        <p class="text-text-muted text-sm leading-relaxed">
+          Complete the AHA coursework on your own time. Self-paced, takes a few hours.
+        </p>
+      </div>
+      <div class="text-center sm:text-left">
+        <div class="text-3xl font-bold text-primary mb-3">2</div>
+        <h3 class="font-semibold text-text mb-2">Skills Check</h3>
+        <p class="text-text-muted text-sm leading-relaxed">
+          Meet in person in Orange County for a hands-on skills session. About an hour for BLS, about two hours for ACLS.
+        </p>
+      </div>
+      <div class="text-center sm:text-left">
+        <div class="text-3xl font-bold text-primary mb-3">3</div>
+        <h3 class="font-semibold text-text mb-2">Certification</h3>
+        <p class="text-text-muted text-sm leading-relaxed">
+          Receive your AHA Provider eCard, valid for 2 years.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Sepi -->
   <section class="bg-surface py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl font-bold text-text mb-4">What I Offer</h2>
-      <p class="text-text-muted mb-10 max-w-2xl">
-        I keep things simple. You tell me what you want to work on, and I'll take care of the rest — the spot, the plan, the gear if you need it.
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service) => (
-          <a href={`/services#${service.id}`} class="group bg-white rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-sm transition-all">
-            <h3 class="font-semibold text-text mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
-            <p class="text-sm text-text-muted leading-relaxed">{service.description}</p>
-          </a>
-        ))}
+      <h2 class="text-3xl font-bold text-text mb-6">About the Instructor</h2>
+      <div class="max-w-3xl">
+        <p class="text-text-muted leading-relaxed mb-4">
+          Sepi Reissmueller is an ER nurse at UC Irvine Medical Center, where she manages the emergency department.
+        </p>
+        <p class="text-text-muted leading-relaxed">
+          She is an American Heart Association authorized BLS and ACLS instructor.
+        </p>
       </div>
     </div>
   </section>
@@ -142,45 +263,74 @@ const services = [
     <h2 class="text-3xl font-bold text-text mb-10">Common Questions</h2>
     <div class="space-y-6 max-w-3xl">
       <div>
-        <h3 class="font-semibold text-text mb-2">Do I need climbing experience?</h3>
+        <h3 class="font-semibold text-text mb-2">Is this an official AHA course?</h3>
         <p class="text-text-muted leading-relaxed">
-          Not at all. A lot of my clients are brand new to climbing. I bring all the gear and walk you through everything from the ground up.
+          Yes. These are official American Heart Association courses. You receive an AHA eCard on completion.
         </p>
       </div>
       <div>
-        <h3 class="font-semibold text-text mb-2">What gear do I need?</h3>
+        <h3 class="font-semibold text-text mb-2">How long does certification last?</h3>
+        <p class="text-text-muted leading-relaxed">2 years.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-text mb-2">Do I need any experience?</h3>
         <p class="text-text-muted leading-relaxed">
-          If you're just getting started, I have everything you need — harness, helmet, shoes. Just show up in clothes you can move in and bring water. If you have your own gear, bring it and we'll talk through your setup.
+          No prior experience is needed for BLS. ACLS is designed for healthcare professionals who may encounter cardiovascular emergencies.
         </p>
       </div>
       <div>
-        <h3 class="font-semibold text-text mb-2">Where do you climb?</h3>
+        <h3 class="font-semibold text-text mb-2">Where is the skills check?</h3>
+        <p class="text-text-muted leading-relaxed">Orange County. Scheduling is flexible.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-text mb-2">How long does it take?</h3>
         <p class="text-text-muted leading-relaxed">
-          All over Southern California — Joshua Tree, Malibu Creek, Stoney Point, Tahquitz, the list goes on. I grew up climbing these spots and I'll pick the right one based on what we're working on and your comfort level.
+          The online portion is self-paced (a few hours). The in-person skills check is about an hour for BLS, and about two hours for ACLS.
         </p>
       </div>
       <div>
-        <h3 class="font-semibold text-text mb-2">How do I book?</h3>
+        <h3 class="font-semibold text-text mb-2">Who is this for?</h3>
         <p class="text-text-muted leading-relaxed">
-          Just give me a <a href="tel:+17142449286" class="text-primary hover:underline">call</a>. We'll have a quick conversation about what you're looking for and find a day that works.
+          BLS is for anyone — healthcare professionals, students, individuals, companies. No prerequisites. ACLS is for healthcare professionals who manage cardiovascular emergencies.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-text mb-2">Will my employer accept this?</h3>
+        <p class="text-text-muted leading-relaxed">
+          AHA BLS Provider and ACLS Provider certifications are the standard for hospitals and clinics, and meet OSHA requirements.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-surface py-16 sm:py-20">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl font-bold text-text mb-4">Let's go climb something</h2>
-      <p class="text-text-muted mb-8 max-w-xl mx-auto">
-        Give me a call and we'll figure out a plan. No pressure, no commitment — just a conversation.
-      </p>
-      <a
-        href="tel:+17142449286"
-        class="inline-flex items-center justify-center bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
-      >
-        (714) 244-9286
-      </a>
+  <!-- Get Started -->
+  <section id="get-started" class="bg-surface py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-text mb-4">Get Started</h2>
+        <p class="text-text-muted mb-8">
+          Fill out the form below and I'll reach out to get you scheduled.
+        </p>
+
+        <!-- TODO: Replace the URL below with your Google Form embed URL.
+             1. Create a Google Form (forms.google.com)
+             2. Click Send → Embed (< > icon)
+             3. Copy the src="..." URL from the iframe code
+             4. Paste it below, replacing the placeholder URL -->
+        <iframe
+          src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+          width="100%"
+          height="800"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          class="rounded-lg"
+          title="Contact form"
+          loading="lazy"
+        >
+          Loading…
+        </iframe>
+      </div>
     </div>
   </section>
 </BaseLayout>
